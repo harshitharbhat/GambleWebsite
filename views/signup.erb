@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link type="text/css" rel="stylesheet" href="materialize.min.css"  media="screen,projection"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <nav style="margin-bottom: 20px;;">
+            <div class="green darken-4" style="padding-bottom: 27px">
+                <div class="navbar-wrapper container" style="text-align: center;">
+                   <h3><lable>Gambling Site</lable></h3>
+                </div>
+            </div>
+        </nav>
+        <div>
+            <h1> Create new account </h1>
+
+            <form action="/signup" method="POST">
+                <label>Username : </label><input name = "gamble[username]" type="text"/>
+                <label>Password : </label><input name = "gamble[password]" type="password"/>
+                <button type = "submit">Sign up</button>
+            </form>
+        </div>
+    </body>
+</html>
