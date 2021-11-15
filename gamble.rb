@@ -2,7 +2,7 @@ require 'dm-core'
 require 'dm-migrations'
 
 enable 'sessions'
-DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/gamble.db")
+DataMapper.setup(:default,ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/gamble.db")
 
 class Gamble
   include DataMapper::Resource
@@ -20,12 +20,16 @@ configure do
     enable :sessions
 end
 
+configure :development do
+  DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/gamble.db")
+end
+
 configure :development, :test do
   DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/gamble.db")
 end
 
 configure :production do 
-  DataMapper.setup(:default, ENV['DATABASE_URL'] || 'postgres://localhost/gambling.db') 
+  DataMapper.setup(:default, ENV['DATABASE_URL'] || 'postgres://localhost/gamble.db') 
 end
 
 post '/login' do
