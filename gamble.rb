@@ -20,8 +20,12 @@ configure do
     enable :sessions
 end
 
-configure :development do
+configure :development, :test do
   DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/gamble.db")
+end
+
+configure :production do 
+  DataMapper.setup(:default, ENV['DATABASE_URL']) 
 end
 
 post '/login' do
