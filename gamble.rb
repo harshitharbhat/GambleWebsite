@@ -1,3 +1,4 @@
+require 'sinatra'
 require 'dm-core'
 require 'dm-migrations'
 
@@ -30,6 +31,21 @@ end
 
 configure :production do 
   DataMapper.setup(:default, ENV['DATABASE_URL'] || 'postgres://localhost/gamble.db') 
+end
+
+get '/' do
+  @title = "home page"
+  erb :index  
+end
+
+get '/login' do
+  @title = "login page"
+  erb :login
+end
+
+get '/signup' do
+  @title = "signup"
+  erb :signup
 end
 
 post '/login' do
